@@ -17,13 +17,10 @@ const {
     createReadStream,
     createWriteStream
 } = require('fs');
-const tecentCos = require('./tecentCos');
+
 
 
 var serverconfig = JSON.parse (fs.readFileSync (__dirname+"/serverconfig.json").toString ());
-var cosConfig = JSON.parse (fs.readFileSync (__dirname+"/tecentcosconfig.json").toString ());
-var hdfsConfig = JSON.parse (fs.readFileSync (__dirname+"/hdfsconfig.json").toString ());
-var hdfsHost = hdfsConfig.host
 // Constants
 const PORT = serverconfig.port;
 const HOST = '0.0.0.0';
