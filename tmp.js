@@ -3,7 +3,6 @@
 const express = require('express');
 let kafkaClient = require('./kafkaClient')
 let bodyParser = require('body-parser')
-let store = require('./aliBucket')
 const spookyhash = require('spookyhash')
 const jsonMerger = require("json-merger");
 const fs = require('fs');
