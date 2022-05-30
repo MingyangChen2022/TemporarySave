@@ -77,6 +77,7 @@ const run = async () => {
 }
 
 function processMessage(message, gzip, destination) {
+    console.log("******start*********")
     // check the message is correct, if not abandon       
     if (validJsonString(message.value.toString()) === false) {
         logger.errorlogger.error('message value is not valid json:   ' + message.value.toString())
@@ -92,6 +93,7 @@ function processMessage(message, gzip, destination) {
     }
 
     console.log(messageBody)
+    console.log("*****end**********")
 
 }
 
@@ -106,7 +108,7 @@ function validJsonString(str) {
 }
 
 
-
+run().catch(e => console.error(`[example/consumer] ${e.message}`, e))
 
 
 
