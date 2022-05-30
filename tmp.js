@@ -22,7 +22,7 @@ const {
 
 var serverconfig = JSON.parse (fs.readFileSync (__dirname+"/serverconfig.json").toString ());
 // Constants
-const PORT = serverconfig.port;
+const PORT = 8080;
 const HOST = '0.0.0.0';
 const MAX_LINES_PER_FILE = serverconfig.maxLinesPerFile;
 const clientMode = "tecentcos"
