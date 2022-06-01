@@ -76,6 +76,10 @@ const run = async () => {
     })
 }
 
+function typeOf(obj) {
+    return {}.toString.call(obj).split(' ')[1].slice(0, -1).toLowerCase();
+}
+
 function processMessage(message, gzip, destination) {
     // check the message is correct, if not abandon       
     if (validJsonString(message.value.toString()) === false) {
@@ -83,7 +87,7 @@ function processMessage(message, gzip, destination) {
         return
     }
     console.log("******start*********")
-    console.log(message)
+    console.log(typeOf(message))
     console.log("*****end**********")
     const messageBody = JSON.parse(message.value.toString())
     const ip = messageBody['clientIp']
