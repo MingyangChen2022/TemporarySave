@@ -70,7 +70,7 @@ const run = async () => {
             for (let message of batch.messages) {
                 if (!isRunning() || isStale()) break
                 console.log("******start*********")
-                console.log(messageBody)
+                console.log(message)
                 console.log("*****end**********")
                 processMessage(message)
                 resolveOffset(message.offset)
