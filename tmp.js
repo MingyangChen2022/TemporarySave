@@ -69,6 +69,9 @@ const run = async () => {
         eachBatch: async ({ batch, resolveOffset, heartbeat, isRunning, isStale }) => {
             for (let message of batch.messages) {
                 if (!isRunning() || isStale()) break
+                console.log("******start*********")
+                console.log(messageBody)
+                console.log("*****end**********")
                 processMessage(message)
                 resolveOffset(message.offset)
             }
@@ -77,7 +80,6 @@ const run = async () => {
 }
 
 function processMessage(message, gzip, destination) {
-    console.log("******start*********")
     // check the message is correct, if not abandon       
     if (validJsonString(message.value.toString()) === false) {
         logger.errorlogger.error('message value is not valid json:   ' + message.value.toString())
@@ -91,9 +93,6 @@ function processMessage(message, gzip, destination) {
         logger.errorlogger.error('ip or body is missing')
         return
     }
-
-    console.log(messageBody)
-    console.log("*****end**********")
 
 }
 
