@@ -69,9 +69,6 @@ const run = async () => {
         eachBatch: async ({ batch, resolveOffset, heartbeat, isRunning, isStale }) => {
             for (let message of batch.messages) {
                 if (!isRunning() || isStale()) break
-                console.log("******start*********")
-                console.log(message)
-                console.log("*****end**********")
                 processMessage(message)
                 resolveOffset(message.offset)
             }
@@ -85,6 +82,9 @@ function processMessage(message, gzip, destination) {
         logger.errorlogger.error('message value is not valid json:   ' + message.value.toString())
         return
     }
+    console.log("******start*********")
+    console.log(message)
+    console.log("*****end**********")
     const messageBody = JSON.parse(message.value.toString())
     const ip = messageBody['clientIp']
     const body = messageBody['body']
